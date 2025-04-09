@@ -1,6 +1,6 @@
-import { loadEnv, defineConfig } from "@medusajs/framework/utils"
+import { defineConfig, loadEnv } from "@medusajs/framework"
 
-loadEnv(process.env.NODE_ENV || "development", process.cwd())
+loadEnv()
 
 export default defineConfig({
   projectConfig: {
@@ -14,9 +14,11 @@ export default defineConfig({
     },
   },
   modules: {
-    __experimental: {
+    // 👇 THIS IS CRITICAL for stopping Workflows from loading
+    _resolve: "@medusajs/modules-sdk",
+    _resolveOptions: {
       modulesV2: {
-        __allowList__: true, // This is the correct location for allowList!
+        __allowList__: true,
       },
     },
   },

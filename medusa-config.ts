@@ -14,7 +14,6 @@ export default defineConfig({
     }
   },
   modules: {
-    workflows: false,
-    stockLocation: false,
-  }
+    __allowList__: true, // ⛔ disables all auto-loaded modules
+  }  
 })

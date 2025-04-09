@@ -15,5 +15,6 @@ export default defineConfig({
   },
   modules: {
     workflows: false,
+    stockLocation: false,
   }
 })

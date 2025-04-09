@@ -1,6 +1,6 @@
-import { loadEnv, defineConfig } from '@medusajs/framework/utils'
+import { loadEnv, defineConfig } from "@medusajs/framework/utils"
 
-loadEnv(process.env.NODE_ENV || 'development', process.cwd())
+loadEnv(process.env.NODE_ENV || "development", process.cwd())
 
 export default defineConfig({
   projectConfig: {
@@ -11,9 +11,14 @@ export default defineConfig({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    }
+    },
   },
   modules: {
-    __allowList__: true, // ⛔ disables all auto-loaded modules
-  }  
+    __experimental: {
+      modulesV2: {
+        __allowList__: true, // This is the correct location for allowList!
+      },
+    },
+  },
 })
+

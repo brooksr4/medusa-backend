@@ -1,7 +1,9 @@
 import { defineConfig } from "@medusajs/framework"
 import { loadEnv } from "@medusajs/framework/utils"
+import path from "path"
 
-loadEnv()
+// ✅ Explicitly pass __dirname so it works in Render
+loadEnv(process.env.NODE_ENV || "production", path.resolve(__dirname))
 
 export default defineConfig({
   projectConfig: {
@@ -15,7 +17,6 @@ export default defineConfig({
     },
   },
   modules: {
-    // 👇 THIS IS CRITICAL for stopping Workflows from loading
     _resolve: "@medusajs/modules-sdk",
     _resolveOptions: {
       modulesV2: {
@@ -24,4 +25,3 @@ export default defineConfig({
     },
   },
 })
-

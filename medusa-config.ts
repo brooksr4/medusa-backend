@@ -1,4 +1,5 @@
-import { defineConfig, loadEnv } from "@medusajs/framework"
+import { defineConfig } from "@medusajs/framework"
+import { loadEnv } from "@medusajs/framework/utils"
 
 loadEnv()
 
